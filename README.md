@@ -2,7 +2,7 @@
 
 **XPlay** (formerly AstraX Play) is an independent, modular game launcher for Linux developed by **AsyGames**. Its Qt Quick interface brings supported games into one customizable desktop experience.
 
-🌐 **[Project website](https://asygames.github.io/xplay-launcher/)** · 📦 **[Public releases](https://github.com/asygames/xplay-releases/releases)**
+🌐 **[Public project overview](https://github.com/asygames/xplay-launcher)** · 📦 **[Public releases](https://github.com/asygames/xplay-releases/releases)**
 
 ## About XPlay
 
