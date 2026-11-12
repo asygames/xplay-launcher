@@ -1,43 +1,96 @@
-# XPlay — Modular Game Launcher for Linux
+<div align="center">
 
-**XPlay** (formerly AstraX Play) is an independent, modular game launcher for Linux developed by **AsyGames**. Its Qt Quick interface brings supported games into one customizable desktop experience.
+<img src="assets/xplay-icon.png" width="112" alt="XPlay icon">
 
-🌐 **[Public project overview](https://github.com/asygames/xplay-launcher)** · 📦 **[Public releases](https://github.com/asygames/xplay-releases/releases)**
+# XPlay
 
-## About XPlay
+**A modular game launcher for Linux.** Minecraft, Roblox, Steam and Epic Games in one place.
 
-XPlay organizes supported games in an animated, orbital launcher interface. Individual game integrations are modular, allowing the launcher and game modules to evolve separately.
+[![Latest release](https://img.shields.io/github/v/release/asygames/xplay-releases?label=release&color=7c5cff)](https://github.com/asygames/xplay-releases/releases)
+![Platform](https://img.shields.io/badge/platform-Linux-3aa0ff)
+![Package](https://img.shields.io/badge/package-AppImage-22b8cf)
+![Built with](https://img.shields.io/badge/built%20with-Qt%20Quick-41cd52)
 
-Current integrations include:
+[Download](https://github.com/asygames/xplay-releases/releases) · [Features](#features) · [Microsoft sign-in](#microsoft-sign-in-for-minecraft) · [Privacy](PRIVACY.md)
 
-- **Minecraft: Java Edition** — profile and instance management, Microsoft account sign-in, game downloads and launching. Supports Vanilla, Fabric, Quilt, Forge and NeoForge configurations.
-- **Genshin Impact** — launch integration on Linux using an appropriate compatibility environment.
-- **Roblox** — dedicated game-launcher module.
-- **Counter-Strike 2** — launcher integration.
-- **AstraX RGB** — lighting controls and integration.
+<img src="assets/screenshots/home.jpg" width="900" alt="XPlay home screen: game cards on an orbit over an animated background">
 
-XPlay is designed for Linux desktops and is distributed as an **AppImage** in its public release repository.
+</div>
 
-## Microsoft account and Minecraft integration
+## About
 
-For Minecraft: Java Edition, XPlay supports the **Microsoft device-code authorization flow**. Users initiate sign-in through XPlay, then complete authentication on Microsoft's own website. **XPlay does not ask users to type their Microsoft password into the launcher.**
+XPlay is an independent game launcher for Linux made by **AsyGames**. Each game is a card on an orbit over an animated background. Spin the orbit to choose a game, press **Play** to start it, or open the game's menu from the gear button.
 
-The Minecraft module uses authorized Microsoft/Xbox Live/Minecraft services to identify the signed-in account, validate access to Minecraft where required, retrieve the player's profile and launch the game. Microsoft authorization is not intended to bypass any license, ownership, authentication or service requirements.
+Each game integration is a separate module, so it can be updated without touching the rest of the launcher. XPlay ships as a single **AppImage** that contains Qt, the X11 and Wayland plugins and every game module.
 
-Authorization data is handled locally by XPlay; the current implementation stores Microsoft refresh tokens in a locally encrypted vault. See our [Privacy information](PRIVACY.md) for details.
+## Features
 
-**We are seeking approval of the XPlay application registration to support this legitimate authentication integration.**
+| | |
+| --- | --- |
+| **Minecraft: Java Edition** | Runs directly from XPlay, with no other launcher needed. Microsoft or offline accounts, profiles, Vanilla, Fabric, Quilt, Forge and NeoForge, Java downloaded automatically, mods and modpacks from Modrinth, shaders, a game console, servers with ping, and a crash page that explains why the game stopped. |
+| **Roblox** | Several Roblox accounts side by side, each as its own instance. A game library with favorites, search by name, Place ID or link, and joining a friend. Roblox Studio is supported too. |
+| **Steam** | Your library with covers, install and play, favorites, launch options per game and several accounts. The store page shows games that run on Linux. |
+| **Epic Games** | Sign-in, downloads and launching handled by XPlay itself, with no extra client. Free games can be added to the library directly. |
+| **Settings** | Language (English or Romanian), automatic updates verified against the published SHA-256 sums, five animated background scenes, and colors and a card picture for each game. |
 
-## Availability
+## Screenshots
 
-Download published builds from **[XPlay Releases](https://github.com/asygames/xplay-releases/releases)**. Supported runtime requirements and version-specific release details are documented there.
+<table>
+  <tr>
+    <td width="50%"><img src="assets/screenshots/minecraft-profile.jpg" alt="Minecraft profile overview"><br><sub><b>Minecraft profile:</b> version, loader, mods, memory and play time.</sub></td>
+    <td width="50%"><img src="assets/screenshots/new-instance.jpg" alt="New Minecraft instance wizard"><br><sub><b>New instance:</b> a three-step wizard (profile, version, memory and Java).</sub></td>
+  </tr>
+  <tr>
+    <td width="50%"><img src="assets/screenshots/accounts.jpg" alt="Minecraft accounts"><br><sub><b>Accounts:</b> Microsoft and offline accounts; the main one starts on Play.</sub></td>
+    <td width="50%"><img src="assets/screenshots/account-style.jpg" alt="Account appearance editor"><br><sub><b>Account style:</b> skin or custom picture, shape and name color.</sub></td>
+  </tr>
+</table>
 
-The application's source code is maintained in a separate private repository. **This public repository is for product information and Microsoft/Minecraft authentication review, not for source-code distribution.**
+## Microsoft sign-in for Minecraft
+
+<img src="assets/screenshots/microsoft-sign-in.jpg" width="380" align="right" alt="Microsoft sign-in dialog in XPlay with a device code">
+
+XPlay signs in to Microsoft with the official **device code flow** (OAuth 2.0 device authorization grant). XPlay never sees or stores your Microsoft password.
+
+1. In XPlay, open **Accounts → Another account → Microsoft account**.
+2. XPlay shows a short code and copies it for you.
+3. Press **Open the Microsoft page**, paste the code and sign in on Microsoft's own page.
+4. XPlay receives the authorization, checks that the account owns Minecraft: Java Edition and adds the player profile.
+
+The tokens are used only to sign in to Microsoft, Xbox Live and Minecraft services and to start the game. They stay on your computer in an AES-256-GCM encrypted file. XPlay does not bypass game ownership or any other service requirement.
+
+Details: [Privacy and authentication](PRIVACY.md).
+
+<br clear="right">
+
+## Install
+
+Download `XPlay-<version>-x86_64.AppImage` from [Releases](https://github.com/asygames/xplay-releases/releases), check it and run it:
+
+```sh
+sha256sum -c XPlay-*-x86_64.AppImage.sha256
+chmod +x XPlay-*-x86_64.AppImage
+./XPlay-*-x86_64.AppImage
+```
+
+On first start XPlay adds itself to the application menu. It needs a Linux desktop (X11 or Wayland), a graphics driver and glibc 2.43 or newer.
+
+| Control | Action |
+| --- | --- |
+| Drag, mouse wheel, `←` `→` | Spin the cards |
+| **Play** or `Enter` | Start the game in front |
+| Gear button or `S` | Open the game's menu |
+| `F11` | Full screen |
+| `F3` | FPS, RAM and VRAM |
+
+## About this repository
+
+This repository is XPlay's public overview and the reference for the Microsoft and Minecraft authentication review. The source code is kept in a private repository. Builds are published in [asygames/xplay-releases](https://github.com/asygames/xplay-releases/releases).
 
 ## Publisher
 
-**AsyGames** · [GitHub organization](https://github.com/asygames)
+**AsyGames** · [github.com/asygames](https://github.com/asygames)
 
 ## Disclaimer
 
-XPlay is an independent third-party application. It is **not affiliated with, endorsed by, or sponsored by Microsoft, Mojang Studios, HoYoverse, Roblox Corporation, or Valve**. Trademarks and game names belong to their respective owners.
+XPlay is an independent third-party application. It is **not affiliated with, endorsed by or sponsored by** Microsoft, Mojang Studios, Roblox Corporation, Valve or Epic Games. Minecraft, Roblox, Steam, Epic Games and the related names and logos are trademarks of their respective owners. The screenshots use test accounts.

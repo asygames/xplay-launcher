@@ -1,6 +1,6 @@
 # XPlay — Privacy & Authentication Information
 
-**Last updated:** November 11, 2026
+**Last updated:** November 12, 2026
 
 This page describes the Microsoft account authentication features of **XPlay**, an independent Linux game launcher maintained by **AsyGames**. The behavior described here concerns the current Minecraft Java Edition integration.
 
@@ -22,7 +22,7 @@ Signing in and launching games may contact Microsoft, Xbox Live, Minecraft/Mojan
 
 ## Account control
 
-Users can manage their Microsoft accounts in the launcher. Removing an account requires reauthorizing to use that account again. Users may also revoke XPlay authorization in their Microsoft account security/permissions settings.
+Users can manage their Microsoft accounts in the launcher. Removing an account requires reauthorizing to use that account again. Users may also revoke XPlay authorization at any time in their Microsoft account, under [Apps and services you've given access](https://account.live.com/consent/Manage).
 
 ## Scope and updates
 
